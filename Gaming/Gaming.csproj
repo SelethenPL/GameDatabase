@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,9 +128,67 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\BossesController.cs" />
+    <Compile Include="Controllers\EquipmentsController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\GuildsController.cs" />
+    <Compile Include="Controllers\HeroesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NPCsController.cs" />
+    <Compile Include="Controllers\PlacesController.cs" />
+    <Compile Include="Controllers\QuestsController.cs" />
+    <Compile Include="Controllers\RaidsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Account.cs">
+      <DependentUpon>Gaming.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Boss.cs">
+      <DependentUpon>Gaming.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Equipment.cs">
+      <DependentUpon>Gaming.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Event.cs">
+      <DependentUpon>Gaming.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Gaming.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Gaming.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Gaming.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Gaming.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Gaming.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Gaming.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Guild.cs">
+      <DependentUpon>Gaming.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hero.cs">
+      <DependentUpon>Gaming.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NPC.cs">
+      <DependentUpon>Gaming.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Place.cs">
+      <DependentUpon>Gaming.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quest.cs">
+      <DependentUpon>Gaming.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Raid.cs">
+      <DependentUpon>Gaming.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\raidsOnTheGo_Result.cs">
+      <DependentUpon>Gaming.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -135,8 +201,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Gaming.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Gaming.Context.cs</LastGenOutput>
+      <DependentUpon>Gaming.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Gaming.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Gaming.edmx</DependentUpon>
+      <LastGenOutput>Gaming.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Gaming.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Gaming.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Gaming.edmx.diagram">
+      <DependentUpon>Gaming.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -162,10 +245,59 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Accounts\Create.cshtml" />
+    <Content Include="Views\Accounts\Delete.cshtml" />
+    <Content Include="Views\Accounts\Details.cshtml" />
+    <Content Include="Views\Accounts\Edit.cshtml" />
+    <Content Include="Views\Accounts\Index.cshtml" />
+    <Content Include="Views\Bosses\Create.cshtml" />
+    <Content Include="Views\Bosses\Delete.cshtml" />
+    <Content Include="Views\Bosses\Details.cshtml" />
+    <Content Include="Views\Bosses\Edit.cshtml" />
+    <Content Include="Views\Bosses\Index.cshtml" />
+    <Content Include="Views\Equipments\Create.cshtml" />
+    <Content Include="Views\Equipments\Delete.cshtml" />
+    <Content Include="Views\Equipments\Details.cshtml" />
+    <Content Include="Views\Equipments\Edit.cshtml" />
+    <Content Include="Views\Equipments\Index.cshtml" />
+    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Guilds\Create.cshtml" />
+    <Content Include="Views\Guilds\Delete.cshtml" />
+    <Content Include="Views\Guilds\Details.cshtml" />
+    <Content Include="Views\Guilds\Edit.cshtml" />
+    <Content Include="Views\Guilds\Index.cshtml" />
+    <Content Include="Views\Heroes\Create.cshtml" />
+    <Content Include="Views\Heroes\Delete.cshtml" />
+    <Content Include="Views\Heroes\Details.cshtml" />
+    <Content Include="Views\Heroes\Edit.cshtml" />
+    <Content Include="Views\Heroes\Index.cshtml" />
+    <Content Include="Views\NPCs\Create.cshtml" />
+    <Content Include="Views\NPCs\Delete.cshtml" />
+    <Content Include="Views\NPCs\Details.cshtml" />
+    <Content Include="Views\NPCs\Edit.cshtml" />
+    <Content Include="Views\NPCs\Index.cshtml" />
+    <Content Include="Views\Places\Create.cshtml" />
+    <Content Include="Views\Places\Delete.cshtml" />
+    <Content Include="Views\Places\Details.cshtml" />
+    <Content Include="Views\Places\Edit.cshtml" />
+    <Content Include="Views\Places\Index.cshtml" />
+    <Content Include="Views\Quests\Create.cshtml" />
+    <Content Include="Views\Quests\Delete.cshtml" />
+    <Content Include="Views\Quests\Details.cshtml" />
+    <Content Include="Views\Quests\Edit.cshtml" />
+    <Content Include="Views\Quests\Index.cshtml" />
+    <Content Include="Views\Raids\Create.cshtml" />
+    <Content Include="Views\Raids\Delete.cshtml" />
+    <Content Include="Views\Raids\Details.cshtml" />
+    <Content Include="Views\Raids\Edit.cshtml" />
+    <Content Include="Views\Raids\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -179,6 +311,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

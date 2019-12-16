@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Gaming.Models.Hero>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<!-- Searching Box -->
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search"/>
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.Nickname)-->
+            @Html.ActionLink("Nickname", "Index", new { sortOrder = ViewBag.NicknameSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Level)
+            <!--@Html.ActionLink("Level", "Index", new { sortOrder = ViewBag.LevelSortParam })-->
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class)
+        </th>
+        <th>
+            Owner Username
+            <!-- @Html.DisplayNameFor(model => model.Account.Username) -->
+        </th>
+        <th>
+            Equipment Name
+            <!-- @Html.DisplayNameFor(model => model.Equipment1.Name) -->
+        </th>
+        <th>
+            <!--Guild Name-->
+            @Html.ActionLink("Guild Name", "Index", new { sortOrder = ViewBag.GuildSortParm })
+            <!-- @Html.DisplayNameFor(model => model.Guild1.Name) -->
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nickname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Level)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Class)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Account.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Equipment1.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Guild1.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Hero_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Hero_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Hero_ID })
+        </td>
+    </tr>
+}
+
+</table>

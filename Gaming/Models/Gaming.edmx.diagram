@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aec0f42e67a54655a448d61df232c3de" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="master.GamingModel.Account" Width="1.5" PointX="7.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="master.GamingModel.Boss" Width="1.5" PointX="1.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="master.GamingModel.Equipment" Width="1.5" PointX="5.375" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="master.GamingModel.Event" Width="1.5" PointX="7.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="master.GamingModel.Guild" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="master.GamingModel.Hero" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="master.GamingModel.NPC" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="master.GamingModel.Place" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="master.GamingModel.Quest" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="master.GamingModel.Raid" Width="1.5" PointX="3.625" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="master.GamingModel.Hero_Account_Account_ID_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="master.GamingModel.Raid_Boss_Boss_ID_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="master.GamingModel.Hero_Equipment_Item_ID_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="master.GamingModel.Quest_Equipment_Item_ID_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="master.GamingModel.Quest_Event_Event_ID_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="master.GamingModel.Raid_Event_Event_ID_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="master.GamingModel.Guild_Place_Place_ID_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="master.GamingModel.Hero_Guild_Guild_ID_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="master.GamingModel.NPC_Place_Place_ID_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="master.GamingModel.Quest_NPC_NPC_ID_fk" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
