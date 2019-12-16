@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Gaming.Models.Raid>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Level Required
+            <!--@Html.DisplayNameFor(model => model.Level_required)-->
+        </th>
+        <th>
+            BossName
+            <!--@Html.DisplayNameFor(model => model.Boss1.Name)-->
+        </th>
+        <th>
+            EventName
+            <!--@Html.DisplayNameFor(model => model.Event.Name)-->
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Level_required)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Boss1.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Event.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Raid_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Raid_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Raid_ID })
+        </td>
+    </tr>
+}
+
+</table>

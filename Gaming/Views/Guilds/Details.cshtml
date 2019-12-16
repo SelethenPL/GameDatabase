@@ -1,0 +1,42 @@
+﻿@model Gaming.Models.Guild
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Guild</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GuildLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuildLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Place.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Place.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Guild_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

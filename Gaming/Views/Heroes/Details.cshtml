@@ -1,0 +1,66 @@
+﻿@model Gaming.Models.Hero
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Hero</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nickname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nickname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Level)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Class)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Class)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipment1.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Equipment1.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Guild1.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Guild1.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Hero_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

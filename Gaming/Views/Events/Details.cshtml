@@ -1,0 +1,50 @@
+﻿@model Gaming.Models.Event
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Event</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Theme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Theme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BeginningDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BeginningDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndingDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Event_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

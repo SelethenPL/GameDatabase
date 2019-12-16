@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Gaming.Models.Quest>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Level Required
+            <!--@Html.DisplayNameFor(model => model.Level_required)-->
+        </th>
+        <th>
+            Reward Equipment
+            <!--@Html.DisplayNameFor(model => model.Equipment.Name)-->
+        </th>
+        <th>
+            Event Name
+            <!--@Html.DisplayNameFor(model => model.Event.Name)-->
+        </th>
+        <th>
+            NPC Giving
+            <!--@Html.DisplayNameFor(model => model.NPC.Name)-->
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Level_required)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Equipment.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Event.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NPC.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Quest_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Quest_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Quest_ID })
+        </td>
+    </tr>
+}
+
+</table>
