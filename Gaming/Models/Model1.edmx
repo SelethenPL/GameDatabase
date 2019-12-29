@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="master.UniversityProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="raidsOnTheGo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="RaidsOnGoID" Type="int" Nullable="false" />
+                <Property Name="RaidName" Type="varchar" MaxLength="20" />
+                <Property Name="LevelRequired" Type="int" />
+                <Property Name="BossName" Type="varchar" MaxLength="20" />
+                <Property Name="BossLevel" Type="int" />
+                <Property Name="EventName" Type="varchar" MaxLength="20" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <EntityContainer Name="masterUniversityProjectModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="master.UniversityProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="raidsOnTheGo_Result">
+          <Property Name="RaidsOnGoID" Type="Int32" Nullable="false" />
+          <Property Name="RaidName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LevelRequired" Type="Int32" />
+          <Property Name="BossName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BossLevel" Type="Int32" />
+          <Property Name="EventName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="raidsOnTheGo" IsComposable="true" ReturnType="Collection(master.UniversityProjectModel.raidsOnTheGo_Result)" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="masterUniversityProjectModelStoreContainer" CdmEntityContainer="Entities">
+          <FunctionImportMapping FunctionName="master.UniversityProjectModel.Store.raidsOnTheGo" FunctionImportName="raidsOnTheGo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="master.UniversityProjectModel.raidsOnTheGo_Result">
+                <ScalarProperty Name="RaidsOnGoID" ColumnName="RaidsOnGoID" />
+                <ScalarProperty Name="RaidName" ColumnName="RaidName" />
+                <ScalarProperty Name="LevelRequired" ColumnName="LevelRequired" />
+                <ScalarProperty Name="BossName" ColumnName="BossName" />
+                <ScalarProperty Name="BossLevel" ColumnName="BossLevel" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

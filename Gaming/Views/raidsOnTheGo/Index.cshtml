@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Gaming.Models.raidsOnTheGo_Result>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RaidsOnGoID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaidName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LevelRequired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BossName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BossLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <th>
+            @Html.DisplayFor(modelItem => item.RaidsOnGoID)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.RaidName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LevelRequired)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BossName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BossLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventName)
+        </td>
+    </tr>
+}
+
+</table>

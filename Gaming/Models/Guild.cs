@@ -11,7 +11,8 @@ namespace Gaming.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Guild
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,10 @@ namespace Gaming.Models
         }
     
         public int Guild_ID { get; set; }
+        [Required]
+        [Range(1, 100)]
         public Nullable<int> GuildLevel { get; set; }
+        [Required]
         public string Name { get; set; }
         public Nullable<int> GuildHouse { get; set; }
     

@@ -52,11 +52,18 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Quest_ID,Name,Level_required,Reward_eq,NPC_giving,Event_ID")] Quest quest)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Quests.Add(quest);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Quests.Add(quest);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.');</script>");
             }
 
             ViewBag.Reward_eq = new SelectList(db.Equipments, "Item_ID", "Name", quest.Reward_eq);
@@ -90,11 +97,18 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Quest_ID,Name,Level_required,Reward_eq,NPC_giving,Event_ID")] Quest quest)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(quest).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(quest).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.');</script>");
             }
             ViewBag.Reward_eq = new SelectList(db.Equipments, "Item_ID", "Name", quest.Reward_eq);
             ViewBag.Event_ID = new SelectList(db.Events, "Event_ID", "Name", quest.Event_ID);

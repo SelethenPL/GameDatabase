@@ -11,7 +11,8 @@ namespace Gaming.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Equipment
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,7 +23,9 @@ namespace Gaming.Models
         }
     
         public int Item_ID { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Range(1,100)]
         public Nullable<int> Level_required { get; set; }
         public string Class_required { get; set; }
         public Nullable<int> Price { get; set; }

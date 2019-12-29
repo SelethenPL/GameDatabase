@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using Gaming.Models;
 
 namespace Gaming.Controllers
@@ -48,11 +49,18 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Account_ID,Username,Password")] Account account)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Accounts.Add(account);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Accounts.Add(account);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.);</script>");
             }
 
             return View(account);
@@ -80,12 +88,20 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Account_ID,Username,Password")] Account account)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(account).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(account).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
+            catch
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.');</script>");
+            }
+
             return View(account);
         }
 

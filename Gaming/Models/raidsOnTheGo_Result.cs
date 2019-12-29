@@ -10,13 +10,16 @@
 namespace Gaming.Models
 {
     using System;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class raidsOnTheGo_Result
     {
+        [Key]
+        public int RaidsOnGoID { get; set; }
         public string RaidName { get; set; }
-        public Nullable<int> Level_required { get; set; }
+        public Nullable<int> LevelRequired { get; set; }
         public string BossName { get; set; }
-        public int BossLevel { get; set; }
+        public Nullable<int> BossLevel { get; set; }
         public string EventName { get; set; }
     }
 }

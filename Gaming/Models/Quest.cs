@@ -11,13 +11,17 @@ namespace Gaming.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Quest
     {
         public int Quest_ID { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Range(1, 100)]
         public int Level_required { get; set; }
         public Nullable<int> Reward_eq { get; set; }
+        [Required]
         public int NPC_giving { get; set; }
         public Nullable<int> Event_ID { get; set; }
     

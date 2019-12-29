@@ -82,11 +82,18 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Hero_ID,Owner_ID,Nickname,Level,Class,Equipment,Guild")] Hero hero)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Heroes.Add(hero);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Heroes.Add(hero);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.');</script>");
             }
 
             ViewBag.Owner_ID = new SelectList(db.Accounts, "Account_ID", "Username", hero.Owner_ID);
@@ -120,11 +127,18 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Hero_ID,Owner_ID,Nickname,Level,Class,Equipment,Guild")] Hero hero)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(hero).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(hero).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.');</script>");
             }
             ViewBag.Owner_ID = new SelectList(db.Accounts, "Account_ID", "Username", hero.Owner_ID);
             ViewBag.Equipment = new SelectList(db.Equipments, "Item_ID", "Name", hero.Equipment);
