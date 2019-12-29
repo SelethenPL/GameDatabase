@@ -9,8 +9,12 @@
 
 namespace Gaming.Models
 {
-    using System;
+    using FluentValidation;
+    using FluentValidation.Attributes;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using System.Web.Mvc;
     
     public partial class Account
     {
@@ -20,10 +24,15 @@ namespace Gaming.Models
             this.Heroes = new HashSet<Hero>();
         }
     
+        [Key]
         public int Account_ID { get; set; }
+        [Key]
+        [Required]
         public string Username { get; set; }
+        [Required]
+        [StringLength(20, MinimumLength = 3)]
         public string Password { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hero> Heroes { get; set; }
     }

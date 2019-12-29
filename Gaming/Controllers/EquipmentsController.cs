@@ -48,13 +48,19 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Item_ID,Name,Level_required,Class_required,Price")] Equipment equipment)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Equipments.Add(equipment);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Equipments.Add(equipment);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-
+            catch
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.');</script>");
+            }
             return View(equipment);
         }
 
@@ -80,11 +86,18 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Item_ID,Name,Level_required,Class_required,Price")] Equipment equipment)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(equipment).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(equipment).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.');</script>");
             }
             return View(equipment);
         }

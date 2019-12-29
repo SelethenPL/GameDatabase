@@ -13,17 +13,30 @@ namespace Gaming.Controllers
     public class GuildsController : Controller
     {
         private GamingContext db = new GamingContext();
-
+        
         // GET: Guilds
-        public ActionResult Index()
+        public ActionResult Index(string searchString, string amountOfLevels)
         {
             var guilds = db.Guilds.Include(g => g.Place);
             return View(guilds.ToList());
         }
 
         // GET: Guilds/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, string levels)
         {
+            if (!String.IsNullOrEmpty(levels))
+            {
+                int x = 0;
+                if (!int.TryParse(levels, out x))
+                {
+                    // didn't worked
+                }
+                else
+                {
+                    db.levelUpGuildMembers(id.ToString(), x);
+                };
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -50,11 +63,18 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Guild_ID,GuildLevel,Name,GuildHouse")] Guild guild)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Guilds.Add(guild);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Guilds.Add(guild);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.');</script>");
             }
 
             ViewBag.GuildHouse = new SelectList(db.Places, "Place_ID", "Name", guild.GuildHouse);
@@ -84,11 +104,18 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Guild_ID,GuildLevel,Name,GuildHouse")] Guild guild)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(guild).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(guild).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.');</script>");
             }
             ViewBag.GuildHouse = new SelectList(db.Places, "Place_ID", "Name", guild.GuildHouse);
             return View(guild);

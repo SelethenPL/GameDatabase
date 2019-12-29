@@ -11,11 +11,16 @@ namespace Gaming.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Raid
     {
+        [Key]
         public int Raid_ID { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
+        [Range(1,100)]
         public Nullable<int> Level_required { get; set; }
         public int Boss { get; set; }
         public Nullable<int> Event_ID { get; set; }

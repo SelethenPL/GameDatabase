@@ -48,13 +48,19 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Boss_ID,Name,Level")] Boss boss)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Bosses.Add(boss);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Bosses.Add(boss);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-
+            catch
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.');</script>");
+            }
             return View(boss);
         }
 
@@ -80,11 +86,18 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Boss_ID,Name,Level")] Boss boss)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(boss).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(boss).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.');</script>");
             }
             return View(boss);
         }

@@ -11,7 +11,8 @@ namespace Gaming.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class NPC
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,7 @@ namespace Gaming.Models
         }
     
         public int NPC_ID { get; set; }
+        [Required]
         public string Name { get; set; }
         public Nullable<int> Home { get; set; }
         public string Profession { get; set; }

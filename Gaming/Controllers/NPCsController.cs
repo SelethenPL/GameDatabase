@@ -50,11 +50,18 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "NPC_ID,Name,Home,Profession")] NPC nPC)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.NPCs.Add(nPC);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.NPCs.Add(nPC);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.');</script>");
             }
 
             ViewBag.Home = new SelectList(db.Places, "Place_ID", "Name", nPC.Home);
@@ -84,11 +91,18 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "NPC_ID,Name,Home,Profession")] NPC nPC)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(nPC).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(nPC).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.');</script>");
             }
             ViewBag.Home = new SelectList(db.Places, "Place_ID", "Name", nPC.Home);
             return View(nPC);

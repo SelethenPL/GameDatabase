@@ -11,7 +11,8 @@ namespace Gaming.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Event
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,9 +23,12 @@ namespace Gaming.Models
         }
     
         public int Event_ID { get; set; }
+        [Required]
         public string Name { get; set; }
         public string Theme { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> BeginningDate { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> EndingDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

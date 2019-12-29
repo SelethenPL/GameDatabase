@@ -11,12 +11,17 @@ namespace Gaming.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Hero
     {
         public int Hero_ID { get; set; }
         public int Owner_ID { get; set; }
+        [Required]
         public string Nickname { get; set; }
+        [Required]
+        [Range(1, 100)]
         public int Level { get; set; }
         public string Class { get; set; }
         public Nullable<int> Equipment { get; set; }

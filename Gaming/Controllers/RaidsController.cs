@@ -51,11 +51,18 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Raid_ID,Name,Level_required,Boss,Event_ID")] Raid raid)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Raids.Add(raid);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Raids.Add(raid);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.');</script>");
             }
 
             ViewBag.Boss = new SelectList(db.Bosses, "Boss_ID", "Name", raid.Boss);
@@ -87,11 +94,18 @@ namespace Gaming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Raid_ID,Name,Level_required,Boss,Event_ID")] Raid raid)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(raid).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(raid).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                Response.Write("<script>alert('Creating unsuccessful. Try to change values to unique.');</script>");
             }
             ViewBag.Boss = new SelectList(db.Bosses, "Boss_ID", "Name", raid.Boss);
             ViewBag.Event_ID = new SelectList(db.Events, "Event_ID", "Name", raid.Event_ID);
