@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="masterUniversityProjectModelStoreContainer" CdmEntityContainer="Entities">
+    <FunctionImportMapping FunctionName="master.UniversityProjectModel.Store.raidsOnTheGo" FunctionImportName="raidsOnTheGo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="master.UniversityProjectModel.raidsOnTheGo_Result">
+          <ScalarProperty Name="RaidsOnGoID" ColumnName="RaidsOnGoID" />
+          <ScalarProperty Name="RaidName" ColumnName="RaidName" />
+          <ScalarProperty Name="LevelRequired" ColumnName="LevelRequired" />
+          <ScalarProperty Name="BossName" ColumnName="BossName" />
+          <ScalarProperty Name="BossLevel" ColumnName="BossLevel" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

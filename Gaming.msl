@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="masterGamingModelStoreContainer" CdmEntityContainer="GamingContext">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="master.GamingModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="Account_ID" ColumnName="Account_ID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bosses">
+      <EntityTypeMapping TypeName="master.GamingModel.Boss">
+        <MappingFragment StoreEntitySet="Boss">
+          <ScalarProperty Name="Boss_ID" ColumnName="Boss_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipments">
+      <EntityTypeMapping TypeName="master.GamingModel.Equipment">
+        <MappingFragment StoreEntitySet="Equipment">
+          <ScalarProperty Name="Item_ID" ColumnName="Item_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Level_required" ColumnName="Level_required" />
+          <ScalarProperty Name="Class_required" ColumnName="Class_required" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="master.GamingModel.Event">
+        <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Theme" ColumnName="Theme" />
+          <ScalarProperty Name="BeginningDate" ColumnName="BeginningDate" />
+          <ScalarProperty Name="EndingDate" ColumnName="EndingDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Guilds">
+      <EntityTypeMapping TypeName="master.GamingModel.Guild">
+        <MappingFragment StoreEntitySet="Guild">
+          <ScalarProperty Name="Guild_ID" ColumnName="Guild_ID" />
+          <ScalarProperty Name="GuildLevel" ColumnName="GuildLevel" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GuildHouse" ColumnName="GuildHouse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Heroes">
+      <EntityTypeMapping TypeName="master.GamingModel.Hero">
+        <MappingFragment StoreEntitySet="Hero">
+          <ScalarProperty Name="Hero_ID" ColumnName="Hero_ID" />
+          <ScalarProperty Name="Owner_ID" ColumnName="Owner_ID" />
+          <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Equipment" ColumnName="Equipment" />
+          <ScalarProperty Name="Guild" ColumnName="Guild" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NPCs">
+      <EntityTypeMapping TypeName="master.GamingModel.NPC">
+        <MappingFragment StoreEntitySet="NPC">
+          <ScalarProperty Name="NPC_ID" ColumnName="NPC_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Home" ColumnName="Home" />
+          <ScalarProperty Name="Profession" ColumnName="Profession" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Places">
+      <EntityTypeMapping TypeName="master.GamingModel.Place">
+        <MappingFragment StoreEntitySet="Place">
+          <ScalarProperty Name="Place_ID" ColumnName="Place_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Level_required" ColumnName="Level_required" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quests">
+      <EntityTypeMapping TypeName="master.GamingModel.Quest">
+        <MappingFragment StoreEntitySet="Quest">
+          <ScalarProperty Name="Quest_ID" ColumnName="Quest_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Level_required" ColumnName="Level_required" />
+          <ScalarProperty Name="Reward_eq" ColumnName="Reward_eq" />
+          <ScalarProperty Name="NPC_giving" ColumnName="NPC_giving" />
+          <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Raids">
+      <EntityTypeMapping TypeName="master.GamingModel.Raid">
+        <MappingFragment StoreEntitySet="Raid">
+          <ScalarProperty Name="Raid_ID" ColumnName="Raid_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Level_required" ColumnName="Level_required" />
+          <ScalarProperty Name="Boss" ColumnName="Boss" />
+          <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="master.GamingModel.Store.raidsOnTheGo" FunctionImportName="raidsOnTheGo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="master.GamingModel.raidsOnTheGo_Result">
+          <ScalarProperty Name="RaidName" ColumnName="RaidName" />
+          <ScalarProperty Name="Level_required" ColumnName="Level_required" />
+          <ScalarProperty Name="BossName" ColumnName="BossName" />
+          <ScalarProperty Name="BossLevel" ColumnName="BossLevel" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="levelUpGuildMembers" FunctionName="master.GamingModel.Store.levelUpGuildMembers" />
+  </EntityContainerMapping>
+</Mapping>
