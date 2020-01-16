@@ -15,7 +15,7 @@ namespace Gaming.Controllers
         private GamingContext db = new GamingContext();
         
         // GET: Guilds
-        public ActionResult Index(string searchString, string amountOfLevels)
+        public ActionResult Index()
         {
             var guilds = db.Guilds.Include(g => g.Place);
             return View(guilds.ToList());
@@ -26,14 +26,15 @@ namespace Gaming.Controllers
         {
             if (!String.IsNullOrEmpty(levels))
             {
-                int x = 0;
+                int x;
                 if (!int.TryParse(levels, out x))
                 {
-                    // didn't worked
+                    Response.Write("<script>alert('Can't parse Levels.');</script>");
                 }
                 else
                 {
                     db.levelUpGuildMembers(id.ToString(), x);
+                    Response.Write("<script>alert('Added levels to guild members.');</script>");
                 };
             }
 
