@@ -16,7 +16,9 @@ Tables:
 * Raid
 * Event
 * Boss
+
 Procedure:
 * levelUpGuildMembers(INT @guildId, INT @amountOfLevels) -> level up every member of a given guild
+
 Function:
 * raidsOnTheGo() -> returns a table of all raids which are currently ongoing (dates)
